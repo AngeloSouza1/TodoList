@@ -1,0 +1,22 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <h5 class="card-title">Detalhes da Tarefa</h5>
+        </div>
+        <div class="card-body">
+          <p class="text-success"><%= notice %></p>
+
+          <%= render @task %>
+        </div>
+        <div class="card-footer text-center">
+          <div class="btn-group" role="group" aria-label="Botões">
+            <%= link_to "Voltar", tasks_path, class: "btn btn-secondary me-2" %> 
+            <%= button_to "Deletar", @task, method: :delete, class: "btn btn-danger" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

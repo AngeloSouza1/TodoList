@@ -1,0 +1,52 @@
+<!-- app/views/tasks/index.html.erb -->
+<div class="container mt-4">
+  <div class="row">
+
+    <div class="col-md-4">
+      <h4 class="text-center">Adicionar Nova Tarefa</h4>
+      <%= render 'form' %>
+    </div>
+    
+    
+    <div class="col-md-8">
+      <h1 class="text-center">Tarefas</h1>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Data</th>
+            <th>Ação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @tasks.each do |task| %>
+            <tr>
+              <td><%= task.name %></td>
+              <td><%= task.description %></td>
+              <td><%= task.due_date %></td>
+            <td>
+  <%= link_to 'Editar', edit_task_path(task), class: 'btn btn-primary btn-sm me-n1' %> 
+</td>  
+            <td>
+  <%= link_to 'Deletar', task_path(task),
+              method: :delete,
+              data: { confirm: 'Você tem certeza?' },
+              class: 'btn btn-danger btn-sm' %>
+</td>
+
+
+  </tr>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+
+      <div class="text-center">
+        <%= will_paginate @tasks, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+      </div>
+    </div>
+  </div>
+</div>
